@@ -1,0 +1,53 @@
+class Bank_account:
+    def __init__(self,a_number,inventory,password):
+        self.a_number=a_number
+        self.inventory=inventory
+        self.password=password
+    def show_inv(self):
+        print("(you only have 3 guess)")
+        for i in range(3):
+            EP=(input("Enter password:"))
+            if  EP == self.password:
+                print(f" inventory: '{self.inventory}$'")
+                break
+            else:
+                print(f"password is wrong!!()please enter correct password.")
+    def add_account(self):
+        ad=int(input("How much do you want to add ? :"))
+        self.inventory+=ad
+        print(f"{ad}$ added to your inventory.")
+    def wd(self):
+        EP=(input(" Enter password :"))
+        if  EP == self.password:
+                withdraw=int(input("How much do you want to withdraw? :"))
+                if withdraw > self.inventory:
+                    print("inventory isn`t enough!!!")
+                else:
+                    self.inventory -= withdraw
+                    print(f"{withdraw}$withdrawed . ")
+        else:
+            print("password is wrong!!")
+print('                     " WELCOME TO TEHRAN BANK "')
+print("(please enter your inforamtions)")
+n=input("name :")
+an=int(input("account number :"))
+
+pa=input("password :")
+inven=int(input("inventory :"))            
+n1=Bank_account(an,inven,pa)
+print(f"Hello {n.capitalize()},how can we help you ? ")
+print("""1.show inventory
+2.add money
+3.withdraw money""")
+while True:
+    op=input("enter number of option :")
+    if op == "1":
+        n1.show_inv()
+    elif op == "2":
+        n1.add_account()
+    elif op == "3":
+        n1.wd()
+    c=input("Do you want to continue ? (y/n) :")
+    if c == "n":
+        break
+
